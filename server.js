@@ -19,9 +19,9 @@ io.on('connection', function(socket) {
     socket.on('disconnect', function() { 
         console.log('disconnected')
     })
-    socket.on('something', function(data) {
+    socket.on('something', function(start, end, color) {
         console.log('i got something')
-        socket.broadcast.emit('someoneDrew', data)
+        socket.broadcast.emit('someoneDrew', start, end, color)
     })
 })
 

@@ -8,16 +8,16 @@ const socket = io(window.location.origin)
 
 // Example of listening to draw events:
 //   (This logging will probably get really annoying):
-whiteboard.on('draw', function(data) {
-    socket.emit('something', data)
+whiteboard.on('draw', function(start, end, color) {
+    socket.emit('something', start, end, color)
 })
 socket.on('connect', function () {
     console.log('I have made a persistent two-way connection to the server!')
 })
 
-socket.on('someoneDrew', function(data) {
+socket.on('someoneDrew', function(start, end, color) {
     console.log('someone drew something')
-    // draw(data);
+    draw(start, end, color);
 })
 
 // Example: Draw a single stroke.
